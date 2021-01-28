@@ -13,11 +13,12 @@ mtp.xlabel("Resumes")
 mtp.show()
 #training the hierarchical model on dataset
 
-
 from sklearn.cluster import AgglomerativeClustering
 hc= AgglomerativeClustering(n_clusters=5, affinity='euclidean', linkage='ward')
 y_pred= hc.fit_predict(x)
 print("predict",y_pred)
+
+
 import matplotlib.pyplot as mtp
 #visulaizing the clusters
 mtp.scatter(x[y_pred == 0, 0], x[y_pred == 0, 1], s = 100, c = 'blue', label = 'Cluster 1')

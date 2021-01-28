@@ -1,5 +1,6 @@
 import os
 import ExtractText as extractText
+from textblob import TextBlob as tb
 
 dir_path="resume_samples"
 
