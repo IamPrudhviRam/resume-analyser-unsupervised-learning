@@ -6,6 +6,7 @@ import TFidf as tf
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 import numpy as np
+import FeatureEngineeringStrategies as featureEngineeringStrategies
 
 
 # Generating the sample data from make_blobs
@@ -20,8 +21,8 @@ import numpy as np
 #                   random_state=1)  # For reproducibility
 #
 
-X=np.asarray(tf.denselist)
-range_n_clusters = [3,4,5]
+X=np.asarray(featureEngineeringStrategies.tv_matrix)
+range_n_clusters = [2,3,4,5]
 
 for n_clusters in range_n_clusters:
     # Create a subplot with 1 row and 2 columns
@@ -87,14 +88,14 @@ for n_clusters in range_n_clusters:
 
     # 2nd Plot showing the actual clusters formed
     colors = cm.nipy_spectral(cluster_labels.astype(float) / n_clusters)
-    ax2.scatter(X[:, 0], X[:, 1], marker='.', s=30, lw=0, alpha=0.7,
+    ax2.scatter(X[:, 0], X[:, 1], marker='.', s=300, lw=0, alpha=1,
                 c=colors, edgecolor='k')
 
     # Labeling the clusters
     centers = clusterer.cluster_centers_
     # Draw white circles at cluster centers
     ax2.scatter(centers[:, 0], centers[:, 1], marker='o',
-                c="white", alpha=1, s=200, edgecolor='k')
+                c="white", alpha=1, s=500, edgecolor='k')
 
     for i, c in enumerate(centers):
         ax2.scatter(c[0], c[1], marker='$%d$' % i, alpha=1,
